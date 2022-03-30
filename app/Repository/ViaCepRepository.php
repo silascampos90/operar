@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use App\Models\Viacep\Endereco;
 
 class ViaCepRepository
@@ -12,7 +13,7 @@ class ViaCepRepository
     public function consultaViaCep($api, $method, $cep)
     {
         $response = Http::get($api . $cep . $method);
-       
+      
         if ($response->status() == 200) {
             if (!isset($response->json()['cep'])) {
                 return response()->json([
@@ -21,7 +22,13 @@ class ViaCepRepository
                     'msg' => 'CEP não encontrado',
                     'data' => ''
                 ]);
+
+                Log::channel('operar')->error('CEP: '.$cep.' Não encontrado.');
+
             }else {
+
+                Log::channel('operar')->info('CEP: '.$cep.' Encontrado.');
+
                 return response()->json([
                     'status' => $response->status(),
                     'sucesso' => $response->successful(),
@@ -30,6 +37,9 @@ class ViaCepRepository
                 ]);
             }
         }else {
+
+            Log::channel('operar')->error('ERROR: '.$response->status());
+
             return response()->json([
                 'status' => $response->status(),
                 'sucesso' => false,
@@ -49,18 +59,27 @@ class ViaCepRepository
                 'sucesso' => true,
                 'msg' => 'CEP Cadastrado com sucesso',
             ]);
+
+            Log::channel('operar')->info('CEP: '.$r->cep.' Cadastrado com sucesso.');
             
         } catch (\Throwable $th) {
             if ($th->getCode() === '23000') {
+
+                Log::channel('operar')->error('CEP: '.$r->cep.' Já Cadastrao.');
+
                 return response()->json([
                     'sucesso' => false,
                     'msg' => 'Cep Já cadastrado.',
                 ]);
-            }else {
+                
+            }else {             
+
+                Log::channel('operar')->error('CEP: '.$r->cep.' Erro ao cadastrar.');
                 return response()->json([
                     'sucesso' => false,
                     'msg' => 'Erro ao Cadastrar.',
                 ]);
+
 
             }
         }

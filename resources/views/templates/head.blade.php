@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+	<link rel="icon" href="assets/images/logo_operar_cep_favicon.png" type="image/png" />
 	<!--plugins-->
 	<link href="assets/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet"/>
 	<link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
@@ -25,5 +25,7 @@
 	<link rel="stylesheet" href="assets/css/dark-theme.css" />
 	<link rel="stylesheet" href="assets/css/semi-dark.css" />
 	<link rel="stylesheet" href="assets/css/header-colors.css" />
-	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+	<link rel="stylesheet" href="assets/css/toastr.min.css" />
+	<link rel="stylesheet" href="assets/css/operar.css" />
+	<title>CEP.IO - Operar Teste</title>
 </head>

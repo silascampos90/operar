@@ -1,3 +1,11 @@
+<div class="overlay toggle-icon"></div>
+<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+
+<footer class="page-footer">
+    <p class="mb-0">Copyright © 2022. Operar.io.</p>
+</footer>
+</div>
+
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 	<!--plugins-->
 	<script src="assets/js/jquery.min.js"></script>
@@ -10,7 +18,12 @@
 	<script src="assets/plugins/chartjs/js/Chart.extension.js"></script>
 	<script src="assets/js/index.js"></script>
 	<!--app JS-->
+    <script src="assets/js/jquery.validate.min.js"></script>
 	<script src="assets/js/app.js"></script>
+	<script src="assets/js/toastr.min.js"></script>
+
+	<script src="assets/js/util.js"></script>
+
 </body>
 
 </html>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Consulta;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ConsultaRequest;
 use Illuminate\Http\Request;
@@ -14,7 +13,7 @@ class ConsultaController extends Controller
 {
 
     private $api = "https://viacep.com.br/ws/";
-    private $typeJson = "/json/";
+    private $method = "/json/";
     private $repository;
 
 
@@ -34,8 +33,8 @@ class ConsultaController extends Controller
     public function consultaViaCep(Request $r, $cep)
     {       
 
+        
         $r->request->add(['cep' => $cep]);
-
         
         $validator = Validator::make(
             $r->all(),
@@ -51,14 +50,8 @@ class ConsultaController extends Controller
                 ]);
         } 
 
-       return $validator;
+       return $this->repository->consultaViaCep($this->api, $this->method, $cep);
         
-        // $response = Http::get($this->api.$cep.$this->typeJson);      
-
-        // return response()->json([
-        //     'sucesso' => $response->successful(),
-        //     'msg' => $response->successful() == true ? 'sucesso' : 'Falha',
-        //     'data' => $response->successful() == true ? $response->json() : ''
-        // ]);
+        
     }
 }

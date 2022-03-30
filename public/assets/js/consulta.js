@@ -44,31 +44,38 @@ $('#consultaCepBtn').click(function (e) {
             url: $('#consultaCepRoute').val() + '/' + cep,
         }).fail(function (res) {
 
-            showToaster('success', 'Sucesso', res.msg)
+            showToaster('error', 'Erro', res.msg)
 
         }).done(function (res) {
-            showToaster('success', 'Sucesso', res.msg)
-            //     if (res.sucesso == true) {
-            //         showToaster('success', 'Sucesso', res.msg)
-            //         $('#procuradorJustica').val(null).trigger('change');
-            //         $('#isSuplentePresidente').bootstrapSwitch('state', false);
-            //         $('#isSuplenteCorregedor').bootstrapSwitch('state', false);
-
-            //     } else {
-            //         res.msg.map(function ($dado) {
-            //             showToaster('error', 'Erro', $dado);
-            //         })
-            //         $('#dataInicio').val('');
-            //         $('#procuradorJustica').val(null).trigger('change');
-            //         $('#isSuplentePresidente').bootstrapSwitch('state', false);
-            //         $('#isSuplenteCorregedor').bootstrapSwitch('state', false);
-
-            //     };
-            // });
+            if(res.status == 200){                
+                showToaster('success', 'Sucesso', res.msg)
+                addTableResult(res.data);
+                $('#listEndereco').show();
+            }else if(res.status == 400){
+                showToaster('error', 'Erro', res.msg)
+                $('#listEndereco').hide();
+            }  
 
         });
     }
 });
+
+
+function addTableResult(dados){
+
+    $('#trCidade').remove();
+    $('#tbCidade').append(`<tr id="trCidade">
+            <th>${dados.uf}</th>
+            <td>${dados.ddd}</td>
+            <td>${dados.localidade}</td>
+            <td>${dados.bairro}</td>
+            <td>${dados.logradouro}</td>
+        </tr>`);
+}
+function clearTableResult(){
+
+    $('#tbCidade').append(``);
+}
 
 
 

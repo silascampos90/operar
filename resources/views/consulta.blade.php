@@ -34,7 +34,43 @@
 
                 </div>
             </div>
+        </div>
 
+        <div style="display:none" id="listEndereco" class="row">
+            <div class="col-12 col-lg-12">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div style="padding-bottom:20px">
+                                <h6 class="mb-0">Endereço Encontrado: </h6>
+                            </div>
+                        </div>
+                        <div class="d-flex j-center">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">UF</th>
+                                        <th scope="col">DDD</th>
+                                        <th scope="col">Cidade</th>
+                                        <th scope="col">Bairro</th>
+                                        <th scope="col">Logradouro</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbCidade">
+                                    
+                                </tbody>
+                            </table>
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="cad-btn">
+                        <a type="button" class="btn btn-info px-5"><i class="bx bx-save mr-1"></i>Cadastrar Endereço</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

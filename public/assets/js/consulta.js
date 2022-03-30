@@ -1,27 +1,8 @@
-// var return_first;
-// var dataInicioDefault = $("#dataInicioDefault").val();
-// var dataFimDefault = $("#dataFimDefault").val();
-// var assessoresPreCadastro = [];
-// var assessorSelecionadoText = '';
+
 
 $(document).ready(function () {
 
 
-    // $.ajax({
-    //     url: $("#plenarioAtualRota").val(),
-    //     method: "get",
-    //     dataType: "json",
-    //     data: {
-    //         ano: new Date().getFullYear()
-    //     },
-    //     success: data => {
-    //         $(data).each(i => {
-    //             $('#dataInicio').val(data[0].dataInicio);
-    //             $('#dataFim').val(data[0].dataFim);
-    //         });
-    //     },
-    // });
-    // //updateSuplentes();
 
 });
 
@@ -49,6 +30,7 @@ $('#consultaCepBtn').click(function (e) {
         }).done(function (res) {
             if(res.status == 200){                
                 showToaster('success', 'Sucesso', res.msg)
+                updateDados(res.data);
                 addTableResult(res.data);
                 $('#listEndereco').show();
             }else if(res.status == 400){
@@ -65,9 +47,9 @@ function addTableResult(dados){
 
     $('#trCidade').remove();
     $('#tbCidade').append(`<tr id="trCidade">
-            <th>${dados.uf}</th>
+            <th id="dadoUF">${dados.uf}</th>
             <td>${dados.ddd}</td>
-            <td>${dados.localidade}</td>
+            <td id="dadoCidade">${dados.localidade}</td>
             <td>${dados.bairro}</td>
             <td>${dados.logradouro}</td>
         </tr>`);
@@ -76,6 +58,58 @@ function clearTableResult(){
 
     $('#tbCidade').append(``);
 }
+
+
+const endereco = {
+    cep: null,
+    logradouro: null,
+    complemento: null,
+    bairro: null,
+    localidade: null,
+    uf: null,
+    ibge: null,
+    gia: null,
+    ddd: null,
+    siafi: null
+}
+
+function updateDados(dados){
+    endereco.cep = dados.cep;
+    endereco.logradouro = dados.logradouro;
+    endereco.complemento = dados.complemento;
+    endereco.bairro = dados.bairro;
+    endereco.localidade = dados.localidade;
+    endereco.uf = dados.uf;
+    endereco.ibge = dados.ibge;
+    endereco.gia = dados.gia;
+    endereco.ddd = dados.ddd;
+    endereco.siafi = dados.siafi;
+}
+
+
+$('#cadastrarEndereco').click(function (e) {
+    e.preventDefault();        
+        
+        $.ajax({
+            method: 'post',
+            url: $('#cadastraCepRoute').val(),
+            data : endereco
+        }).fail(function (res) {
+            showToaster('error', 'Erro', res.msg)
+        }).done(function (res) {
+            if(res.status == 200){                
+                showToaster('success', 'Sucesso', res.msg)
+                addTableResult(res.data);
+                $('#listEndereco').show();
+            }else if(res.status == 400){
+                showToaster('error', 'Erro', res.msg)
+                $('#listEndereco').hide();
+            }  
+
+        });
+    
+});
+
 
 
 

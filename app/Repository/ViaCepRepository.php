@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use Illuminate\Support\Facades\Http;
 
-class ConsultaRepository
+class ViaCepRepository
 {
 
 

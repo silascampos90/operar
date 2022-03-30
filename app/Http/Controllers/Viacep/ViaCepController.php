@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Consulta;
+namespace App\Http\Controllers\Viacep;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\ConsultaRequest;
+use App\Http\Requests\ViaCepRequest;
 use Illuminate\Http\Request;
 
-use App\Repository\ConsultaRepository;
+use App\Repository\ViaCepRepository;
 
-class ConsultaController extends Controller
+class ViaCepController extends Controller
 {
 
     private $api = "https://viacep.com.br/ws/";
@@ -17,7 +17,7 @@ class ConsultaController extends Controller
     private $repository;
 
 
-    public function __construct(ConsultaRepository $repository)
+    public function __construct(ViaCepRepository $repository)
     {
 
         $this->repository = $repository;
@@ -38,8 +38,8 @@ class ConsultaController extends Controller
         
         $validator = Validator::make(
             $r->all(),
-            (new ConsultaRequest)->rules(),
-            (new ConsultaRequest)->messages()
+            (new ViaCepRequest)->rules(),
+            (new ViaCepRequest)->messages()
         );
         
         if ($validator->fails()) {

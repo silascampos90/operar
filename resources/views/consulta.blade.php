@@ -3,6 +3,7 @@
 
 
 <input type="hidden" value="{{route('consultaViaCep','')}}" id="consultaCepRoute">
+<input type="hidden" value="{{route('cadastraViaCep')}}" id="cadastraCepRoute">
 <!--CONTAINER -->
 <div class="page-wrapper">
     <div class="page-content">
@@ -35,7 +36,6 @@
                 </div>
             </div>
         </div>
-
         <div style="display:none" id="listEndereco" class="row">
             <div class="col-12 col-lg-12">
                 <div class="card radius-10">
@@ -60,14 +60,10 @@
                                     
                                 </tbody>
                             </table>
-
-
-
                         </div>
-
                     </div>
                     <div class="cad-btn">
-                        <a type="button" class="btn btn-info px-5"><i class="bx bx-save mr-1"></i>Cadastrar Endereço</a>
+                        <a type="button" id="cadastrarEndereco" class="btn btn-info px-5"><i class="bx bx-save mr-1"></i>Cadastrar Endereço</a>
                     </div>
                 </div>
             </div>

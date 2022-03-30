@@ -18,4 +18,4 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('consultar', ['as' => 'consultaCep', 'uses' => 'Consulta\ConsultaController@consultar']);
+Route::get('consultar', ['as' => 'consultaCep', 'uses' => 'Viacep\ViaCepController@consultar']);

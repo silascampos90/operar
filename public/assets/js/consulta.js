@@ -2,6 +2,7 @@
 
 $(document).ready(function () {
 
+    $("#cepConsultaInput").mask('00000-000', { reverse: true });
 
 
 });
@@ -28,12 +29,14 @@ $('#consultaCepBtn').click(function (e) {
             showToaster('error', 'Erro', res.msg)
 
         }).done(function (res) {
-            if(res.status == 200){                
+
+           
+            if(res.sucesso == true){                
                 showToaster('success', 'Sucesso', res.msg)
                 updateDados(res.data);
                 addTableResult(res.data);
                 $('#listEndereco').show();
-            }else if(res.status == 400){
+            }else{
                 showToaster('error', 'Erro', res.msg)
                 $('#listEndereco').hide();
             }  
@@ -88,6 +91,7 @@ function updateDados(dados){
 
 
 $('#cadastrarEndereco').click(function (e) {
+    
     e.preventDefault();        
         
         $.ajax({
@@ -97,11 +101,11 @@ $('#cadastrarEndereco').click(function (e) {
         }).fail(function (res) {
             showToaster('error', 'Erro', res.msg)
         }).done(function (res) {
-            if(res.status == 200){                
+            if(res.sucesso == true){                
                 showToaster('success', 'Sucesso', res.msg)
                 addTableResult(res.data);
-                $('#listEndereco').show();
-            }else if(res.status == 400){
+                $('#listEndereco').hide();
+            }else{
                 showToaster('error', 'Erro', res.msg)
                 $('#listEndereco').hide();
             }  

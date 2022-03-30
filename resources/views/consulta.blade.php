@@ -23,7 +23,7 @@
                             <div class="d-flex j-center">
 
                                 <div class=" col-7">
-                                    <input class="form-control mb-3" id="cepConsultaInput" type="number" placeholder="00000-000" required>
+                                    <input class="form-control mb-3" id="cepConsultaInput" name="cepConsultaInput" type="text" placeholder="00000-000" required>
                                 </div>
 
                                 <div class="col-2" style="margin-left: 10px;">

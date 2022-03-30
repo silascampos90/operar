@@ -24,7 +24,7 @@ class ViaCepRequest extends FormRequest
     public function rules()
     {
         return [
-            'cep'=> ['required']
+            'cep'=> ['required','max:8', 'max:8']
         ];
     }
 
@@ -32,6 +32,8 @@ class ViaCepRequest extends FormRequest
     {
         return [
             'cep.required' => 'Cep é obrigartório.',
+            'cep.min' => 'Número mínimo de 8 Dígitos.',
+            'cep.max' => 'Número máximo de 8 Dígitos.',
         ];
     }
 }

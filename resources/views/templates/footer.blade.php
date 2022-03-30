@@ -21,6 +21,8 @@
     <script src="assets/js/jquery.validate.min.js"></script>
 	<script src="assets/js/app.js"></script>
 	<script src="assets/js/toastr.min.js"></script>
+	<script src="assets/js/jquery.mask.js"></script>
+
 
 	<script src="assets/js/util.js"></script>
 

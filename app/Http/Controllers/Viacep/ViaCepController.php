@@ -21,7 +21,6 @@ class ViaCepController extends Controller
     {
 
         $this->repository = $repository;
-       
     }
 
     public function consultar()
@@ -30,28 +29,30 @@ class ViaCepController extends Controller
     }
 
 
-    public function consultaViaCep(Request $r, $cep)
-    {       
+    public function consultaViaCep($cep)
+    {
+        $cep = intval(str_replace(['-', '.'], '', $cep));        
+        return $this->repository->consultaViaCep($this->api, $this->method, $cep);
+    }
 
-        
-        $r->request->add(['cep' => $cep]);
-        
+    public function cadastraViaCep(Request $r)
+    {
+
+        $r['cep'] = intval(str_replace(['-', '.'], '', $r['cep']));
+
         $validator = Validator::make(
             $r->all(),
             (new ViaCepRequest)->rules(),
             (new ViaCepRequest)->messages()
         );
-        
+
         if ($validator->fails()) {
+            return response()->json([
+                'sucesso' => false,
+                'msg' => $validator->getMessageBag()->all()
+            ]);
+        }        
 
-                return response()->json([
-                    'sucesso' => false,
-                    'msg' => $validator->getMessageBag()->all()
-                ]);
-        } 
-
-       return $this->repository->consultaViaCep($this->api, $this->method, $cep);
-        
-        
+        return $this->repository->cadastraViaCep($r);
     }
 }

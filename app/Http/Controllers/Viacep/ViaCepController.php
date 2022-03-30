@@ -67,5 +67,12 @@ class ViaCepController extends Controller
         return view('detalhes')->with(['detalhes' => $detalhes]);
     }
 
+    public function testeConsultaViaCEP($cep)
+    {
+        return $this->repository->testeConsultaViaCEP($this->api, $this->method, $cep);       
+    }
+
+    
+
     
 }

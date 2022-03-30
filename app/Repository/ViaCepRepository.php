@@ -111,4 +111,24 @@ class ViaCepRepository
             ]);
         }
     }
+
+    public function testeConsultaViaCEP($api, $method, $cep)
+    {
+        $response = Http::get($api . $cep . $method);
+
+        if (!isset($response->json()['cep'])) {
+            return response()->json([
+                'code' => $response->status(),
+                'sucesso' => false,
+                'msg' => 'Erro ao pesquisar cep.',
+            ]);
+        }else{
+            return response()->json([
+                'code' => $response->status(),
+                'sucesso' => true,
+                'msg' => 'Cep Encontrado com Sucesso.',
+            ]);
+
+        }
+    }
 }

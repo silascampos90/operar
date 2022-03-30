@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('consultaCepViaCEP/{cep}', ['as' => 'consultaViaCep', 'uses' => 'Viacep\ViaCepController@consultaViaCep']);
 Route::post('cadastraViaCep', ['as' => 'cadastraViaCep', 'uses' => 'Viacep\ViaCepController@cadastraViaCep']);
+

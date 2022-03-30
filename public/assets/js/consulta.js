@@ -1,10 +1,5 @@
-
-
 $(document).ready(function () {
-
     $("#cepConsultaInput").mask('00000-000', { reverse: true });
-
-
 });
 
 $( "input" ).focus(function() {
@@ -29,7 +24,6 @@ $('#consultaCepBtn').click(function (e) {
             showToaster('error', 'Erro', res.msg)
 
         }).done(function (res) {
-
            
             if(res.sucesso == true){                
                 showToaster('success', 'Sucesso', res.msg)
@@ -101,16 +95,18 @@ $('#cadastrarEndereco').click(function (e) {
         }).fail(function (res) {
             showToaster('error', 'Erro', res.msg)
         }).done(function (res) {
+            $('#listEndereco').hide();
             if(res.sucesso == true){                
                 showToaster('success', 'Sucesso', res.msg)
                 addTableResult(res.data);
-                $('#listEndereco').hide();
             }else{
                 showToaster('error', 'Erro', res.msg)
-                $('#listEndereco').hide();
             }  
 
+
         });
+
+        $('#listEndereco').hide();
     
 });
 

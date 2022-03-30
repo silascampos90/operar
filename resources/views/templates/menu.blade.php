@@ -5,7 +5,7 @@
 		<div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div>
-					<img src="assets/images/logo_operar_cep.png" class="logo-icon" alt="logo icon">
+					<img src="{{route('home')}}/assets/images/logo_operar_cep.png" class="logo-icon" alt="logo icon">
 				</div>
 			</div>
 			<!--navigation-->
@@ -19,7 +19,7 @@
 					<ul>
 						<li> <a href="{{route('consultaCep')}}"><i class="bx bx-right-arrow-alt"></i>Consultar</a>
 						</li>
-						<li> <a href="index2.html"><i class="bx bx-right-arrow-alt"></i>Alternate</a>
+						<li> <a href="{{route('listarCep')}}"><i class="bx bx-right-arrow-alt"></i>Lista CEP's</a>
 						</li>
 					</ul>
 				</li>
@@ -160,7 +160,7 @@
 					</div>
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="assets/images/avatars/pp.jpg" class="user-img" alt="user avatar">
+							<img src="{{route('home')}}/assets/images/avatars/pp.jpg" class="user-img" alt="user avatar">
 							<div class="user-info ps-3">
 								<p class="user-name mb-0">Silas Campos</p>
 								<p class="designattion mb-0">DEV</p>

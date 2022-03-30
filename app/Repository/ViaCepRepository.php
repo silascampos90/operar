@@ -65,4 +65,31 @@ class ViaCepRepository
             }
         }
     }
+
+
+    public function listar(){
+        try {
+            
+            return Endereco::all();
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'sucesso' => false,
+                'msg' => 'Erro ao pesquisar endereços.',
+            ]);
+        }
+    }
+
+    public function detalhaCep($cep){
+        try {
+            
+            return Endereco::where('cep',$cep)->first();
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'sucesso' => false,
+                'msg' => 'Erro ao pesquisar endereços.',
+            ]);
+        }
+    }
 }

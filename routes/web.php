@@ -19,3 +19,5 @@ Route::get('/', function () {
 
 
 Route::get('consultar', ['as' => 'consultaCep', 'uses' => 'Viacep\ViaCepController@consultar']);
+Route::get('listar', ['as' => 'listarCep', 'uses' => 'Viacep\ViaCepController@listar']);
+Route::get('detalhes/{cep}', ['as' => 'detalhaCep', 'uses' => 'Viacep\ViaCepController@detalhaCep']);

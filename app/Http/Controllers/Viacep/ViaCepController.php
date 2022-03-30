@@ -31,14 +31,19 @@ class ViaCepController extends Controller
 
     public function consultaViaCep($cep)
     {
-        $cep = intval(str_replace(['-', '.'], '', $cep));        
+        $cep = str_replace(['-', '.'], '', $cep);        
         return $this->repository->consultaViaCep($this->api, $this->method, $cep);
+    }
+
+    public function listar(){             
+        $enderecos =$this->repository->listar();
+        return view('listar')->with(['enderecos'=>$enderecos]);
     }
 
     public function cadastraViaCep(Request $r)
     {
 
-        $r['cep'] = intval(str_replace(['-', '.'], '', $r['cep']));
+        $r['cep'] = str_replace(['-', '.'], '', $r['cep']);
 
         $validator = Validator::make(
             $r->all(),
@@ -55,4 +60,12 @@ class ViaCepController extends Controller
 
         return $this->repository->cadastraViaCep($r);
     }
+
+    public function detalhaCep($cep)
+    {
+        $detalhes = $this->repository->detalhaCep($cep);
+        return view('detalhes')->with(['detalhes' => $detalhes]);
+    }
+
+    
 }
